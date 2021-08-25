@@ -1,0 +1,50 @@
+package com.incrys.homework.vendingmachine.dao;
+
+import com.incrys.homework.vendingmachine.currency.Bills;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "vending_machine_bills")
+public class BillsClass {
+
+
+    @Id
+    @Column(name = "value")
+    private int value;
+
+    @Column(name = "count")
+    private int count;
+
+    public BillsClass() {
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public Bills getBill(int value){
+        return Bills.findBillByValue(value);
+    }
+
+    @Override
+    public String toString() {
+        return "Bill = " + getValue() + " RON" + " x " + count + ';';
+    }
+
+}
